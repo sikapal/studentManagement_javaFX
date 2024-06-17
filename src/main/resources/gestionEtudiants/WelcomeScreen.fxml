@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionEtudiants.WelcomeScreenController">
+   <children>
+      <BorderPane prefHeight="480.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="74.0" prefWidth="640.0" style="-fx-background-color: #457b9d;">
+               <children>
+                  <Pane layoutY="30.0" prefHeight="41.0" prefWidth="640.0" style="-fx-background-color: white;">
+                     <children>
+                        <ComboBox fx:id="myFileComboBox" layoutY="-1.0" onAction="#ClickFile" prefHeight="46.0" prefWidth="164.0" promptText="FILES" styleClass="myFileComboBox" stylesheets="@style.css" />
+                        <ComboBox fx:id="myChoiceBox" layoutX="164.0" layoutY="-1.0" onAction="#getScreen" prefHeight="46.0" prefWidth="164.0" promptText="EDIT" styleClass="myFileComboBox" stylesheets="@style.css" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="31.0" layoutY="4.0" prefHeight="6.0" prefWidth="602.0" text="     Ecole Nationale Supérieure des Postes et Télécommunications et des TICs" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="31.0" fitWidth="48.0" layoutX="11.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/supptic_images_1-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="405.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.6666666666666856" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="430.0" fitWidth="640.0" layoutY="-5.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../images/splashIm2.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="83.0" fitWidth="130.0" layoutX="506.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/supptic_images_1-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="113.0" layoutY="288.0" prefHeight="117.0" prefWidth="435.0" text="WELCOME TO SUP'PTIC" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

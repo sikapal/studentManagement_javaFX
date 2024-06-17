@@ -1,0 +1,84 @@
+
+.paneLeft{
+ -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
+  -fx-border-radius: 10px;
+   
+}
+.white-form{
+    -fx-background-color:#fff;
+}
+.other-form{
+    -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    
+    
+}
+.login_btn{
+    -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-cursor:hand;
+}
+.paneBottom{
+    -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
+}
+
+.errorMessage{
+    -fx-text-fill:red;
+}
+
+.myFileComboBox{
+     -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
+      -fx-border-width: 1px;
+    -fx-font-size: 14px;
+    -fx-font-weight:bold; 
+    -fx-transition:0.4;
+}
+
+.myFileComboBox .text-input {
+      -fx-text-fill:#ffffff;
+}
+.myFileComboBox .arrow-button {
+    -fx-color: #ffffff;
+}
+.myFileComboBox .list-cell:hover {
+    -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
+}
+
+
+
+
+.btn_print{
+    
+}
+.btn_save{
+   -fx-background-color:#38bdac;
+   -fx-text-color:white;
+  
+}
+
+.btn-delete{
+    -fx-background-color:#e63946;
+   -fx-text-color:white;
+}
+ .btn_save :hover{
+    -fx-border-color: #457b9d;
+   -fx-cursor:hand;
+}
+  .btn_back :hover{
+    -fx-border-color: #457b9d;
+   -fx-cursor:hand;
+}
+.btn_refresh:hover{
+    -fx-border-color: #457b9d;
+   -fx-cursor:hand;
+}
+.btn_refresh{
+   -fx-background-color:#0077b6;
+   -fx-text-color:white;
+}
+.btn_back{
+   -fx-background-color:#e63946;
+   -fx-text-color:white;
+}

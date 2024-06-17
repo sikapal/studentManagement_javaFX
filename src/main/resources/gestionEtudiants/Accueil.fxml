@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionEtudiants.AccueilController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+   <children>
+      <Pane fx:id="paneLeft" layoutX="14.0" layoutY="66.0" prefHeight="249.0" prefWidth="289.0" styleClass="paneLeft">
+         <children>
+            <Button fx:id="btn_print" layoutX="59.0" layoutY="36.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="160.0" text="PRINT" />
+            <Button fx:id="btn_quit" layoutX="65.0" layoutY="125.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="160.0" text="QUIT" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneRight" layoutX="21.0" layoutY="43.0" prefHeight="256.0" prefWidth="243.0" styleClass="paneRight" stylesheets="@style.css">
+         <children>
+            <Button fx:id="btn_newStudent" layoutX="44.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchToAddStudent" prefHeight="31.0" prefWidth="160.0" text="NEW STUDENT" />
+            <Button fx:id="btn_update" layoutX="44.0" layoutY="81.0" mnemonicParsing="false" onAction="#switchToUpdateStudent" prefHeight="31.0" prefWidth="160.0" text="UPDATE" />
+            <Button fx:id="btn_delete" layoutX="44.0" layoutY="137.0" mnemonicParsing="false" onAction="#switchToDeleteStudent" prefHeight="31.0" prefWidth="160.0" text="DELETE" />
+            <Button fx:id="btn_viewStudent" layoutX="47.0" layoutY="196.0" mnemonicParsing="false" onAction="#switchToViewStudent" prefHeight="31.0" prefWidth="160.0" text="VIEW STUDENTS" />
+         </children>
+      </Pane>
+      <ComboBox fx:id="myChoiceBox" layoutX="378.0" layoutY="66.0" prefWidth="150.0" promptText="Edition" />
+   </children>
+</AnchorPane>
