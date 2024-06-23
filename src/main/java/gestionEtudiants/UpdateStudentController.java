@@ -113,6 +113,18 @@ public class UpdateStudentController  implements Initializable {
         }
 
     }
+    
+       @FXML
+    public void closeApp(){
+    System.exit(0);
+    }
+    
+    @FXML
+    private void MinimizeApp(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
 
     @FXML
     public void showStudents() {
@@ -185,8 +197,8 @@ public class UpdateStudentController  implements Initializable {
             Optional<ButtonType> result = dialog.showAndWait();
             if (result.isPresent() && result.get() == okButton) {
                 Queries query = new Queries();
-                Student student = new Student(this.student.getId(),fieldMatricule.getText(), fieldFirstname.getText(), fieldLastname.getText(),LabelAgeHidden.getText(),LabelGenderHidden.getText(),fieldClass.getText());
-                query.updateStudent(student);
+                Student students = new Student(this.student.getId(),fieldMatricule.getText(), fieldFirstname.getText(), fieldLastname.getText(),LabelAgeHidden.getText(),LabelGenderHidden.getText(),fieldClass.getText());
+                query.updateStudent(students);
                 showStudents();
                 clearFields();
                 
@@ -204,7 +216,7 @@ public class UpdateStudentController  implements Initializable {
     }
 
     public void switchToMainMenu(ActionEvent event) throws IOException {
-        Scene scene = new Scene(loadFXML("WelcomeScreen"), 640, 480);
+        Scene scene = new Scene(loadFXML("WelcomeScreen2"), 700, 500);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();

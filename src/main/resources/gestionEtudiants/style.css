@@ -28,30 +28,52 @@
     -fx-text-fill:red;
 }
 
-.myFileComboBox{
+.myMenuBar{
      -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
       -fx-border-width: 1px;
     -fx-font-size: 14px;
     -fx-font-weight:bold; 
     -fx-transition:0.4;
 }
+.menuFile{
+    -fx-text-fill:#ffffff;
+}
 
-.myFileComboBox .text-input {
+
+.minimise_btn {
+    -fx-background-color: none;
+    -fx-text-fill:#000000;
+}
+
+.minimise_btn:hover {
+    -fx-background-color: #dadada;
+    -fx-text-fill:#000000;
+    -fx-cursor:hand;
+}
+.welcometext{
+     -fx-text-fill: linear-gradient(to bottom right,#457b9d,#a8dadc);
+}
+
+.close_btn:hover {
+    -fx-background-color:red ;
+    -fx-text-fill:#ffffff;
+    -fx-cursor:hand;
+}
+
+.close_btn {
+    -fx-background-color: none;
+    -fx-text-fill:#000000;
+}
+.myMenuBar .text-input {
       -fx-text-fill:#ffffff;
 }
-.myFileComboBox .arrow-button {
+.myMenuBar .arrow-button {
     -fx-color: #ffffff;
 }
-.myFileComboBox .list-cell:hover {
+.myMenuBar .menuItem:hover {
     -fx-background-color: linear-gradient(to bottom right,#457b9d,#a8dadc);
 }
 
-
-
-
-.btn_print{
-    
-}
 .btn_save{
    -fx-background-color:#38bdac;
    -fx-text-color:white;

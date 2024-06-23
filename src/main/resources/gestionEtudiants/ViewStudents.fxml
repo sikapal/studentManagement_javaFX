@@ -5,24 +5,59 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionEtudiants.ViewStudentsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionEtudiants.ViewStudentsController">
    <children>
-      <BorderPane prefHeight="480.0" prefWidth="640.0">
+      <BorderPane prefHeight="500.0" prefWidth="700.0">
          <top>
-            <AnchorPane prefHeight="30.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="30.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="30.0" prefWidth="640.0" style="-fx-background-color: #457b9d;">
+                  <Pane prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #457b9d;">
                      <children>
-                        <Label layoutX="199.0" layoutY="2.0" prefHeight="14.0" prefWidth="269.0" text="VIEW ALL STUDENTS" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="204.0" layoutY="35.0" prefHeight="15.0" prefWidth="269.0" text="VIEW ALL STUDENTS" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Algerian" size="24.0" />
                            </font>
                         </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="24.0" prefHeight="71.0" prefWidth="700.0" style="-fx-background-color: #457b9d;">
+                     <children>
+                        <Label layoutX="200.0" layoutY="22.0" prefHeight="17.0" prefWidth="269.0" text=" VIEW ALL STUDENTS" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Algerian" size="24.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutY="-24.0" prefHeight="30.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Button fx:id="close_btn" layoutX="671.0" layoutY="5.0" mnemonicParsing="false" onAction="#closeApp" prefHeight="23.0" prefWidth="30.0" styleClass="close_btn" stylesheets="@style.css" text="X">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minimise_btn" layoutX="641.0" layoutY="3.0" mnemonicParsing="false" onAction="#MinimizeApp" prefHeight="23.0" prefWidth="30.0" styleClass="minimise_btn" stylesheets="@style.css" text="_">
+                                 <font>
+                                    <Font name="Arial Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="28.0" fitWidth="30.0" layoutX="6.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/background.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="36.0" layoutY="8.0" text="Student Management">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
                </children>
@@ -31,37 +66,40 @@
          <center>
             <AnchorPane prefHeight="253.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutY="-4.0" prefHeight="354.0" prefWidth="640.0" style="-fx-background-color: WHITE;">
+                  <Pane layoutY="1.0" prefHeight="349.0" prefWidth="700.0" style="-fx-background-color: WHITE;">
                      <children>
-                        <TextField fx:id="fieldSearch" layoutX="179.0" layoutY="28.0" prefHeight="52.0" prefWidth="359.0" promptText="Enter the Student's Matricule...." />
-                        <Label layoutX="74.0" layoutY="37.0" prefHeight="35.0" prefWidth="105.0" text="Search:">
+                        <TextField fx:id="fieldSearch" layoutX="164.0" layoutY="57.0" prefHeight="52.0" prefWidth="359.0" promptText="Enter the Student's Matricule...." />
+                        <Label layoutX="59.0" layoutY="66.0" prefHeight="35.0" prefWidth="105.0" text="Search:">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableView" layoutY="99.0" onMouseClicked="#mouseClicked" prefHeight="255.0" prefWidth="640.0">
+                        <TableView fx:id="tableView" layoutY="130.0" onMouseClicked="#mouseClicked" prefHeight="245.0" prefWidth="700.0">
                            <columns>
                               <TableColumn fx:id="colid" minWidth="0.0" prefWidth="31.33334219455719" text="Id" />
-                              <TableColumn fx:id="colMatricule" minWidth="25.0" prefWidth="89.33334732055664" text="Matricule" />
-                              <TableColumn fx:id="colFirstname" minWidth="25.0" prefWidth="96.66667938232422" text="FirstName" />
-                              <TableColumn fx:id="colLastname" minWidth="25.0" prefWidth="106.66670227050781" text="LastName" />
+                              <TableColumn fx:id="colMatricule" minWidth="25.0" prefWidth="103.99999618530273" text="Matricule" />
+                              <TableColumn fx:id="colFirstname" minWidth="25.0" prefWidth="112.0" text="FirstName" />
+                              <TableColumn fx:id="colLastname" minWidth="25.0" prefWidth="133.3333282470703" text="LastName" />
                               <TableColumn fx:id="colAge" minWidth="25.0" prefWidth="98.0" text="Age" />
-                              <TableColumn fx:id="colGender" minWidth="25.0" prefWidth="117.99996948242188" text="Gender" />
-                              <TableColumn fx:id="colClass" minWidth="25.0" prefWidth="96.0" text="Class" />
+                              <TableColumn fx:id="colGender" minWidth="25.0" prefWidth="111.33328247070312" text="Gender" />
+                              <TableColumn fx:id="colClass" minWidth="25.0" prefWidth="107.3333740234375" text="Class" />
                            </columns>
                         </TableView>
-                        <Button layoutX="561.0" layoutY="28.0" mnemonicParsing="false" onAction="#searchStudent" prefHeight="34.0" prefWidth="65.0" text="Search" />
+                        <Button layoutX="553.0" layoutY="66.0" mnemonicParsing="false" onAction="#searchStudent" prefHeight="34.0" prefWidth="65.0" text="Search" />
                      </children>
                   </Pane>
-                  <AnchorPane layoutY="350.0" prefHeight="101.0" prefWidth="640.0">
+                  <AnchorPane layoutY="344.0" prefHeight="87.0" prefWidth="700.0">
                      <children>
-                        <Pane fx:id="paneBottom" layoutX="-1.0" prefHeight="101.0" prefWidth="640.0" styleClass="paneBottom" stylesheets="@style.css">
+                        <Pane fx:id="paneBottom" prefHeight="89.0" prefWidth="700.0" styleClass="paneBottom" stylesheets="@style.css">
                            <children>
-                              <Button fx:id="btn_back" layoutX="119.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="34.0" prefWidth="140.0" styleClass="btn_back" stylesheets="@style.css" text="Back" textFill="WHITE">
+                              <Button fx:id="btn_back" layoutX="176.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="34.0" prefWidth="140.0" styleClass="btn_back" stylesheets="@style.css" text="Back" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font></Button>
-                              <Button layoutX="338.0" layoutY="34.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="140.0" text="Print" />
+                              <Button layoutX="380.0" layoutY="14.0" mnemonicParsing="false" onAction="#DatabaseExportUniqueToPDF" prefHeight="34.0" prefWidth="140.0" style="-fx-background-color: GREEN;" text="Print one Student" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
                            </children>
                         </Pane>
                      </children>

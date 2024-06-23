@@ -39,11 +39,11 @@ public class DatabaseExportToPDF {
             Font boldFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
             Paragraph para = new Paragraph("Students Data From Database", boldFont);
             para.setAlignment(Paragraph.ALIGN_CENTER);
-             document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
             document.add(para);
             
             document.add(new Paragraph(" "));
-             document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
             
             //add databse elements
             String url = "jdbc:mysql://localhost:3306/gestionetudiant";
@@ -52,8 +52,8 @@ public class DatabaseExportToPDF {
 
             DBConnection dbConnection = new DBConnection();
             Connection connection = DriverManager.getConnection(url, username, password);
-            PreparedStatement ps = null;
-            ResultSet rs = null;
+            PreparedStatement ps ;
+            ResultSet rs ;
 
             String query = "SELECT * FROM student";
             ps = connection.prepareStatement(query);
@@ -91,10 +91,7 @@ public class DatabaseExportToPDF {
             table.addCell(rs.getString("classe"));
 
             document.add(table);
-               
-
-                
-
+   
             }
 
       

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package gestionEtudiants;
 
 import static gestionEtudiants.App.loadFXML;
@@ -83,37 +80,6 @@ public class AddStudentController implements Initializable {
 
     }
 
-    //check if student is present
-//    public boolean CheckStudentIDPresent() {
-//        boolean isPresent = false;
-//
-//        String Matricule = fieldMatricule.getText();
-//        String FirstName = fieldFirstname.getText();
-//        String LastName = fieldLastname.getText();
-//        String Age = LabelAgeHidden.getText();
-//        String Gender = LabelGenderHidden.getText();
-//        String Classe = fieldClass.getText();
-//
-//        try {
-//            Connection con = DBConnection.getCon();
-//            String sql = "Select Matricule from student WHERE Matricule = ? ";
-//            PreparedStatement pst = con.prepareStatement(sql);
-//
-//            pst.setString(1, Matricule);
-//
-//            ResultSet rs = pst.executeQuery();
-//
-//            if (rs.next()) {
-//                isPresent = true;
-//               
-//            }
-//
-//        } catch (Exception e) {
-//           // javax.swing.JOptionPane.showMessageDialog(this, "Ce Matricule existe déjà. ");
-//        }
-//
-//        return isPresent;
-//    }
 
     //method to add Student
     @FXML
@@ -161,7 +127,7 @@ public class AddStudentController implements Initializable {
     }
 
     public void switchToMainMenu(ActionEvent event) throws IOException {
-        Scene scene = new Scene(loadFXML("WelcomeScreen"), 640, 480);
+        Scene scene = new Scene(loadFXML("WelcomeScreen2"), 700, 500);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -172,6 +138,19 @@ public class AddStudentController implements Initializable {
         clearFields();
     }
 
+      @FXML
+    public void closeApp(){
+    System.exit(0);
+    }
+    
+    @FXML
+    private void MinimizeApp(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // we initialise the combo box with valuies in the array for gender 

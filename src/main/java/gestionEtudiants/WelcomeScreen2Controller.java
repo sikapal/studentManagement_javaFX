@@ -1,6 +1,8 @@
 package gestionEtudiants;
 
-import static gestionEtudiants.App.loadFXML;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 
 import java.io.StringWriter;
 import com.itextpdf.text.Document;
@@ -12,6 +14,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import static gestionEtudiants.App.loadFXML;
 import gestionEtudiants.data.DBConnection;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,13 +35,18 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -53,76 +61,23 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Element;
 
-public class WelcomeScreenController implements Initializable {
+public class WelcomeScreen2Controller implements Initializable {
 
     @FXML
-    private ComboBox<String> myChoiceBox;
+    private Menu menuFile;
 
     @FXML
-    private ComboBox<String> myFileComboBox;
+    private MenuItem SubMenuExit;
 
-    private final String[] Liste = {"New Student", "Update Student", "Delete Student", "View All Students"};
-    private final String[] Liste2 = {"Print", "Exit"};
+    @FXML
+    MenuBar myMenuBar;
 
-    public void getScreen(ActionEvent event) throws IOException {
-
-        String SelectedScene = myChoiceBox.getSelectionModel().getSelectedItem();
-        if (null != SelectedScene) {
-            switch (SelectedScene) {
-                case "New Student": {
-                    Scene scene = new Scene(loadFXML("AddStudent"), 640, 480);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
-                    break;
-                }
-                case "Update Student": {
-                    Scene scene = new Scene(loadFXML("UpdateStudent"), 640, 480);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
-                    break;
-                }
-                case "Delete Student": {
-                    Scene scene = new Scene(loadFXML("DeleteStudent"), 640, 480);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
-                    break;
-                }
-                case "View All Students": {
-                    Scene scene = new Scene(loadFXML("ViewStudents"), 640, 480);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(scene);
-                    stage.show();
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
+    @FXML
+    public void Exit(ActionEvent event) throws IOException {
+        showCloseConfirmation(event);
     }
 
-    public void ClickFile(ActionEvent event) throws IOException {
-        String SelectedScene = myFileComboBox.getSelectionModel().getSelectedItem();
-
-        if ("Exit".equals(SelectedScene)) {
-                     showCloseConfirmation(event);
-                   
-
-        } else if ("Print".equals(SelectedScene)) {
-            showPrintOptions();
-        }
-    }
-    
-    public void switchToLogin(ActionEvent event) throws IOException {
-        Scene scene = new Scene(loadFXML("Login"), 640, 480);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    private void showCloseConfirmation(ActionEvent event)  throws IOException{
+    private void showCloseConfirmation(ActionEvent event) throws IOException {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Close application");
         alert.setHeaderText("Do you really want to quit this session");
@@ -137,12 +92,8 @@ public class WelcomeScreenController implements Initializable {
             if (type == okButton) {
                 // Handle Option 1
                 System.out.println("ok Button Selected");
-                try {
-                    switchToLogin(event);
-                    //  Platform.exit();
-                } catch (IOException ex) {
-                    Logger.getLogger(WelcomeScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                System.exit(0);
+                //  Platform.exit();
 
             } else {
                 // Handle Cancel
@@ -152,38 +103,42 @@ public class WelcomeScreenController implements Initializable {
 
     }
 
-    private void showPrintOptions() {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Export Options");
-        alert.setHeaderText("Choose an export option:");
-
-        ButtonType option1 = new ButtonType("PDF");
-        ButtonType option2 = new ButtonType("EXCEL");
-        ButtonType option3 = new ButtonType("HTML");
-        ButtonType option4 = new ButtonType("XML");
-        ButtonType cancel = new ButtonType("Cancel", ButtonType.CANCEL.getButtonData());
-
-        alert.getButtonTypes().setAll(option1, option2, option3,option4, cancel);
-
-        alert.showAndWait().ifPresent(type -> {
-            if (type == option1) {
-                DatabaseExportToPDF();
-                System.out.println("PDF selected");
-            } else if (type == option2) {
-                DatabaseToExcel();
-                System.out.println("EXCEL selected");
-            } else if (type == option3) {
-                DatabaseExportToHTML();
-                System.out.println("HTML selected");
-            } else if (type == option4) {
-                DatabaseExportToXML();
-                System.out.println("XML selected");
-
-            } else {
-                
-                System.out.println("Cancel selected");
-            }
-        });
+    public void switchToAddStudent(ActionEvent event) throws IOException {
+        Scene scene = new Scene(loadFXML("AddStudent"), 700, 500);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+     public void switchToUpdateStudent(ActionEvent event) throws IOException {
+        Scene scene = new Scene(loadFXML("UpdateStudent"), 700, 500);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+     
+     public void switchToViewStudents(ActionEvent event) throws IOException {
+        Scene scene = new Scene(loadFXML("ViewStudents"), 700, 500);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+      public void switchToDeleteStudent(ActionEvent event) throws IOException {
+        Scene scene = new Scene(loadFXML("DeleteStudent"), 700, 500);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+   @FXML
+    public void closeApp(){
+    System.exit(0);
+    }
+    
+    @FXML
+    private void MinimizeApp(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
     // method to export as HTML
@@ -450,13 +405,12 @@ public class WelcomeScreenController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-  
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        myChoiceBox.getItems().addAll(Liste);
-        myFileComboBox.getItems().addAll(Liste2);
+
+        // subMenuExit.setOnAction(this::handleMenuAction);
+        // subMenuLogin.setOnAction(this::handleMenuAction);
     }
 
 }

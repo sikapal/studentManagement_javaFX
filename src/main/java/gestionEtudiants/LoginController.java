@@ -13,9 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -49,8 +47,20 @@ public class LoginController implements Initializable {
         }
     }
     
+     @FXML
+    public void closeApp(){
+    System.exit(0);
+    }
+    
+    @FXML
+    private void MinimizeApp(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+    
         public void switchToMainMenu(ActionEvent event) throws IOException {
-        Scene scene = new Scene(loadFXML("WelcomeScreen"), 640, 480);
+        Scene scene = new Scene(loadFXML("WelcomeScreen2"), 700, 500);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -74,7 +84,6 @@ public class LoginController implements Initializable {
             return resultSet.next(); // Return true if a matching record is found
 
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }

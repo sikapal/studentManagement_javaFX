@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.collections.FXCollections;
 import gestionEtudiants.model.Student;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javafx.collections.ObservableList;
 
@@ -14,6 +16,24 @@ public class Queries {
      private  DBConnection c = new DBConnection();
     //Query to add into db
      
+        // Method to check if a student with the given matricule exists
+    public boolean studentExists(String matricule) {
+        boolean exists = false;
+        String query = "SELECT COUNT(*) FROM students WHERE matricule = ?";
+
+        try (Connection conn = DBConnection.getCon();
+           PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, matricule);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    exists = rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
      
      public void addStudent(Student student){
         try {

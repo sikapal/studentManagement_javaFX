@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package gestionEtudiants;
 
 import static gestionEtudiants.App.loadFXML;
@@ -86,10 +83,22 @@ public class DeleteStudentController implements Initializable {
     UpdateStudentController update = new UpdateStudentController();
 
     public void switchToMainMenu(ActionEvent event) throws IOException {
-        Scene scene = new Scene(loadFXML("WelcomeScreen"), 640, 480);
+        Scene scene = new Scene(loadFXML("WelcomeScreen2"), 700, 500);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+    
+      @FXML
+    public void closeApp(){
+    System.exit(0);
+    }
+    
+    @FXML
+    private void MinimizeApp(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @FXML
@@ -134,11 +143,6 @@ public class DeleteStudentController implements Initializable {
             Student student = tableView.getSelectionModel().getSelectedItem();
             student = new Student(student.getId(), student.getMatricule(), student.getFirstname(), student.getLastname(), student.getAge(), student.getGender(), student.getClasse());
             this.student = student;
-//            colMatricule.setText(student.getMatricule());
-//            colFirstname.setText(student.getFirstname());
-//            colLastname.setText(student.getLastname());
-//
-//            colClass.setText(student.getClasse());
 
         } catch (Exception ex) {
             ex.printStackTrace();
